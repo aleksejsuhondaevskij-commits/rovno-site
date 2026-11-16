@@ -121,3 +121,24 @@
   window.addEventListener('resize', updateArrows);
   updateArrows();
 })();
+
+// FAQ: три вопроса и раскрытие остальных
+(function () {
+  'use strict';
+  var button = document.querySelector('.faq-more');
+  var items = Array.prototype.slice.call(document.querySelectorAll('#faq-list .faq-item'), 3);
+  if (!button || !items.length) return;
+  function setExpanded(expanded) {
+    items.forEach(function (item) {
+      item.hidden = !expanded;
+      if (!expanded) item.open = false;
+    });
+    button.setAttribute('aria-expanded', String(expanded));
+    button.textContent = expanded ? 'Свернуть' : 'Показать еще';
+  }
+  setExpanded(false);
+  button.hidden = false;
+  button.addEventListener('click', function () {
+    setExpanded(button.getAttribute('aria-expanded') !== 'true');
+  });
+})();
