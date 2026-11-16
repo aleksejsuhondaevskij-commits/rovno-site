@@ -2008,3 +2008,25 @@ picture {
     font-size: 17px;
   }
 }
+
+/* На компьютере фото мастера заполняет карточку без пустой полосы */
+@media (min-width: 801px) {
+  .master-photo {
+    position: relative;
+    min-height: 0;
+  }
+  .master-photo picture {
+    display: block;
+    position: absolute;
+    inset: 0;
+  }
+  .master-photo img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
